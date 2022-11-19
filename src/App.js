@@ -35,7 +35,7 @@ const App = () => {
                     <Menu.Item key="2">
                         <DesktopOutlined />
                         <span>Бронь</span>
-                        <Link to="/test1" />
+                        <Link to="/bron" />
                     </Menu.Item>
                     <Menu.Item key="3">
                         <LineChartOutlined />
