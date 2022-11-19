@@ -10,7 +10,7 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 //import {Route} from "react-router-dom";
-import Test from "./components/Test";
+
 import Test1 from "./components/Test1";
 import Entry from "./components/Entry";
 import Usercab from "./components/user/Usercab";
