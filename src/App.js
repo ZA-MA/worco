@@ -40,7 +40,7 @@ const App = () => {
                     <Menu.Item key="3">
                         <LineChartOutlined />
                         <span>Статистика</span>
-                        <Link to="/test2" />
+                        <Link to="/stat" />
                     </Menu.Item>
                 </Menu>
             </Sider>
