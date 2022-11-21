@@ -1,0 +1,49 @@
+.map {
+    position: relative;
+}
+.map img {
+    width: 100%;
+    height: auto;
+}
+.map svg {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.map svg path {
+
+    fill: none; /* Убираем обводку */
+    pointer-events: all; /* Разрешаем быть целью событий мыши */
+    cursor: pointer; /* Меняем курсор при наведении */
+}
+.map svg path:hover {
+    animation: hoverElement 2s linear infinite; /* При наведении включаем анимацию */
+}
+
+.map svg ellipse {
+    shape-outside: ellipse();
+    clip-path: ellipse();
+    background: linear-gradient(to top right, #FDB171, #FD987D);
+    fill: none; /*!* Убираем обводку *!*/
+    pointer-events: all; /* Разрешаем быть целью событий мыши */
+    cursor: pointer; /* Меняем курсор при наведении */
+}
+.map svg ellipse:hover {
+    animation: hoverElement 2s linear infinite; /* При наведении включаем анимацию */
+}
+
+@keyframes hoverElement { /* Сама анимация */
+    0% {
+        stroke: #000000;
+    }
+    50% {
+        stroke: #fc0000;
+    }
+    100% {
+        stroke: #000000;
+    }
+}
+

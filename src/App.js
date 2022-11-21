@@ -63,7 +63,7 @@ const App = () => {
                         padding: 24,
                         minHeight: 500,
                     }} >
-                    <Routes>
+                    <Routes style={{minHeight:500}}>
                     <Route path="/" element={<Entry/>}/>
                     <Route path="/account" element={<Usercab/>}/>
                     <Route path="/bron" element={<Test1/>}/>
