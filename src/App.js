@@ -20,24 +20,25 @@ const { Header, Sider, Content } = Layout;
 const App = () => {
 
     const [collapsed, setCollapsed] = useState(false);
+
     return (
 
         <BrowserRouter>
         <Layout>
             <Sider trigger={null} collapsible collapsed={collapsed}>
                 <div className="logo" />
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-                    <Menu.Item key="1">
+                <Menu theme="dark" mode="inline" defaultSelectedKeys={[window.location.pathname]}  >
+                    <Menu.Item key="/account">
                         <UserOutlined />
                         <span>Личный кабинет</span>
                         <Link to="/account" />
                     </Menu.Item>
-                    <Menu.Item key="2">
+                    <Menu.Item key="/bron" >
                         <DesktopOutlined />
                         <span>Бронь</span>
                         <Link to="/bron" />
                     </Menu.Item>
-                    <Menu.Item key="3">
+                    <Menu.Item key="/stat">
                         <LineChartOutlined />
                         <span>Статистика</span>
                         <Link to="/stat" />
@@ -64,9 +65,9 @@ const App = () => {
                         minHeight: 500,
                     }} >
                     <Routes style={{minHeight:500}}>
-                    <Route path="/" element={<Entry/>}/>
-                    <Route path="/account" element={<Usercab/>}/>
-                    <Route path="/bron" element={<Test1/>}/>
+                        <Route path="/" element={<Entry/>} />
+                        <Route path="/account" element={<Usercab/>} />
+                        <Route path="/bron" element={<Test1/>} />
                     </Routes>
                 </Content>
             </Layout>

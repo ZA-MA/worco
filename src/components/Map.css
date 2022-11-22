@@ -24,16 +24,35 @@
 }
 
 .map svg ellipse {
-    shape-outside: ellipse();
-    clip-path: ellipse();
-    background: linear-gradient(to top right, #FDB171, #FD987D);
-    fill: none; /*!* Убираем обводку *!*/
+
+    /*fill: ; !*!* Убираем обводку *!*!*/
     pointer-events: all; /* Разрешаем быть целью событий мыши */
     cursor: pointer; /* Меняем курсор при наведении */
 }
 .map svg ellipse:hover {
     animation: hoverElement 2s linear infinite; /* При наведении включаем анимацию */
 }
+
+.map svg circle {
+
+    fill: #1890ff; /* Убираем обводку *!*/
+    pointer-events: all; /* Разрешаем быть целью событий мыши */
+    cursor: pointer; /* Меняем курсор при наведении */
+}
+.map svg circle:hover {
+    animation: hoverElement 2s linear infinite; /* При наведении включаем анимацию */
+}
+
+.map svg image {
+
+    fill: red; /* Убираем обводку */
+    pointer-events: all; /* Разрешаем быть целью событий мыши */
+    cursor: pointer; /* Меняем курсор при наведении */
+}
+.map svg circle:hover {
+    animation: hoverElement 2s linear infinite; /* При наведении включаем анимацию */
+}
+
 
 @keyframes hoverElement { /* Сама анимация */
     0% {
