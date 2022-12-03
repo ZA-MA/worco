@@ -1,3 +1,5 @@
+
+
 .trigger {
     padding: 0 24px;
     font-size: 18px;
@@ -11,12 +13,20 @@
 }
 
 .logo {
-    height: 32px;
-    margin: 16px;
-    background: rgba(255, 200, 255, 0.3);
+
+    height: 80px;
+    margin: 0px;
+    background-image: url("images/parma_logo.svg");
+    background-size: 100% 100%;
+
 }
 
 .site-layout .site-layout-background {
     background: #fff;
+
+}
+
+.ant-menu-item-selected {
+    background-color: #FF4346 !important;
 
 }

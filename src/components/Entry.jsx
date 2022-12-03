@@ -9,14 +9,36 @@ const Entry = () => {
     const navigate = useNavigate();
     const onFinish = (values) => {
 
-        console.log('Success:', values);
-        if(values.username === '1' && values.password === '2'){
-            navigate(`/account`);}
+        var formData = new FormData();
+        formData.append('cmd', 'LOGIN');
+        formData.append('login', values.username);
+        formData.append('pass', values.password);
+        fetch('http://localhost/worco/', {method:'POST', body: formData})
+            .then(response => response.text())
+            .then(response =>{
+
+
+            if(response === "Success"){
+                console.log('Success:', values);
+
+                navigate(`/account`);
+                localStorage.setItem('User', values.username)
+                localStorage.setItem('Auth', 'true')
+
+            }
+
+        })
+
+
+
+
     };
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
     const  onSubmit = () => {
+
+
 
     };
     return (

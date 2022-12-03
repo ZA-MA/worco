@@ -11,4 +11,4 @@ import Test2 from "./components/Test2";
 
 
 
-createRoot(document.getElementById('container')).render(<InteractiveMap />);
+createRoot(document.getElementById('container')).render(<App />);
