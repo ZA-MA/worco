@@ -52,17 +52,18 @@ const Usercab = () => {
         //бронирование рабочего места
 
         const formData = new FormData();
-        formData.append('cmd', 'CANCELBOOKPLACE')
-        formData.append('id', dataUser.workplace_id)
-        formData.append('start_booking', '0')
-        formData.append('end_booking', '0')
-        formData.append('user_name', localStorage.getItem('UserName'))
+        formData.append('cmd', 'CANCELBOOKPLACE');
+        formData.append('id', dataUser.workplace_id);
+        formData.append('start_booking', '0');
+        formData.append('end_booking', '0');
+        formData.append('user_name', localStorage.getItem('UserName'));
 
 
         await fetch('http://localhost:80/worco/', {method: 'POST', body: formData}).then(response => response.json())
-            .then(response => console.log(response))
+            .then(response => console.log(response));
         //запись нового рабочего места в локальное хранилище
-        localStorage.setItem('Place', '0')
+        localStorage.setItem('Place', '0');
+        getDataUser();
         navigate('/accaunt');
 
 
@@ -95,17 +96,12 @@ const Usercab = () => {
                     <Descriptions title="Информация о пользователе" layout="horizontal" column={1} style={{marginTop: 25}}>
                         <Descriptions.Item span={1} label="Телефон" labelStyle={{fontWeight: "bold"}}>+{dataUser.phone}</Descriptions.Item>
                         <Descriptions.Item span={1} label="Почта" labelStyle={{fontWeight: "bold"}}>{dataUser.mail}</Descriptions.Item>
-                        <Descriptions.Item  label={`Рабочее место`} span={1} labelStyle={{fontWeight: "bold"}}> {(dataUser.workplace_id !=='0') ? '№' + dataUser.workplace_id : 'Не забронировано'}</Descriptions.Item>
+                        <Descriptions.Item  label={`Рабочее место`} span={1} labelStyle={{fontWeight: "bold"}}> {(dataUser.workplace_id === 0) ? 'Не забронировано' : '№' + dataUser.workplace_id}</Descriptions.Item>
                         <Descriptions.Item span={1}><Button danger onClick={cancelBookPlace} style={cancelBooking()}>Отменить бронирование</Button></Descriptions.Item>
                     </Descriptions>
 
 
 
-
-                    <Modal title="Место такое-то" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                        <p><UserOutlined /> Человек</p>
-                        <p>Забронировано</p>
-                    </Modal>
             {/*<svg width="250" height="250">*/}
             {/*    <circle cx="125" cy="125" r="100" fill="#aeaeae" />*/}
             {/*    <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="100px" font-family="Arial" dy=".3em">BC</text>*/}
