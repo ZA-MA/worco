@@ -1,0 +1,13 @@
+.logo1 {
+
+    height: 100px;
+    margin: 100px 0 auto auto;
+
+    background-image: url("./images/parma_logo.svg");
+    background-size: 100% 100%;
+
+
+}
+.ant-checkbox-inner{
+    background-color: #FF4346 !important;
+}

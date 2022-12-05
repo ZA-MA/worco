@@ -35,17 +35,17 @@ const Main = () => {
         // stay on this route since the user is not authenticated
     }
     const [collapsed, setCollapsed] = useState(false);
-    function fclick(){
+    const [dataUser, setDataUser] = useState({})
+    async function getDataUser() {
         const formData = new FormData();
         formData.append('cmd', 'GET')
-        //formData.append('user', localStorage.getItem('user'))
-        fetch('http://localhost:80/worco/', {method: 'POST', body: formData})
+        formData.append('user', localStorage.getItem('UserName'))
+        let response;
+        response = await fetch('http://localhost:80/worco/', {method: 'POST', body: formData})
             .then(response => response.json())
-            .then(response => {
-                const dataUser = response;
-                console.log(dataUser)
-                console.log(response)
-            });
+        setDataUser(response)
+        console.log(dataUser.status)
+
         // fetch('http://localhost:80/worco/', {method:'PUT', headers: {'Content-type': 'application/json; charset=UTF-8'}, body: formData}).then(response => response.json()).then(response =>{
         //     console.log(response)})
 
@@ -60,9 +60,20 @@ const Main = () => {
         // }).then(response => response.json()).then(response =>{
         //     console.log(response)})
     }
+    const CheckStatusUser = () =>{
 
+        if(dataUser.status === 'admin'){
+            return false
+        }else if(dataUser.status === 'user'){
+            return true
+        }else {
+            return true
+        }
+    };
     useEffect(() => {
         verifyAuth();
+        getDataUser()
+
     }, []);
     return (
 
@@ -73,15 +84,15 @@ const Main = () => {
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={[window.location.pathname]} style={{backgroundColor: "#293240"}}>
                         <Menu.Item key="/account" >
                             <UserOutlined />
-                            <span style={{ fontFamily: 'Montserrat'}}>Личный кабинет</span>
+                            <span style={{ }}>Личный кабинет</span>
                             <Link to="/account" />
                         </Menu.Item>
                         <Menu.Item key="/bron" >
                             <DesktopOutlined />
-                            <span style={{ fontFamily: 'Montserrat'}}>Карта офиса</span>
+                            <span style={{ }}>Карта офиса</span>
                             <Link to="/bron" />
                         </Menu.Item>
-                        <Menu.Item key="/stat">
+                        <Menu.Item key="/stat" disabled={CheckStatusUser().valueOf()}>
                             <LineChartOutlined />
                             <span>Статистика</span>
                             <Link to="/stat" />
@@ -105,7 +116,7 @@ const Main = () => {
                         style={{
                             margin: '24px 16px',
                             padding: 24,
-                            minHeight: 500,
+                            minHeight: 650,
                         }} >
 
                         <Routes>

@@ -30,3 +30,9 @@
     background-color: #FF4346 !important;
 
 }
+.ant-btn-primary{
+    background-color: #FF4346 !important;
+}
+.ant-menu-item-disabled{
+    display: none !important;
+}

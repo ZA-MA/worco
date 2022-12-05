@@ -28,7 +28,7 @@ const Usercab = () => {
 
         const formData = new FormData();
         formData.append('cmd', 'GET')
-        formData.append('user', localStorage.getItem('User'))
+        formData.append('user', localStorage.getItem('UserName'))
         fetch('http://localhost:80/worco/', {method: 'POST', body: formData})
             .then(response => response.json())
             .then(response => {
@@ -46,6 +46,7 @@ const Usercab = () => {
         localStorage.clear();
         navigate('/');
     }
+    let img = "http://localhost:80/worco/images/pp.jpg"
     return(
         <>
 
@@ -56,15 +57,15 @@ const Usercab = () => {
 
 
                     >
-                        <Avatar size={64} icon={<UserOutlined/>} style={{marginRight: 10}}/>
+                        <Avatar size={64} src={dataUser.photo} style={{margin: 10}}/>
                         <Text>{dataUser.name}</Text>
                     </Paragraph>
 
 
-                    <Descriptions title="User Info" layout="horizontal" column={1}>
-                        <Descriptions.Item label="Телефон" labelStyle={{fontWeight: "bold"}}>+ {dataUser.phone}</Descriptions.Item>
+                    <Descriptions title="Информация о пользователе" layout="horizontal" column={1} style={{marginTop: 25}}>
+                        <Descriptions.Item label="Телефон" labelStyle={{fontWeight: "bold"}}>+{dataUser.phone}</Descriptions.Item>
                         <Descriptions.Item label="Почта" labelStyle={{fontWeight: "bold"}}>{dataUser.mail}</Descriptions.Item>
-                        <Descriptions.Item label={`Рабочее место на ${date.format(now, 'DD MMM')}`} span={1} labelStyle={{fontWeight: "bold"}}> Не забронировано </Descriptions.Item>
+                        <Descriptions.Item label={`Рабочее место`} span={1} labelStyle={{fontWeight: "bold"}}> №{(dataUser.workplace_id !=='0') ? dataUser.workplace_id : 'Не забронировано'} </Descriptions.Item>
                     </Descriptions>
 
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 import {Link, Router} from "react-router-dom";
 import * as ReactRouterDOM from "react-router";
-
+import './entry.css'
 const Entry = () => {
     const useNavigate = ReactRouterDOM.useNavigate;
     const navigate = useNavigate();
@@ -14,16 +14,17 @@ const Entry = () => {
         formData.append('login', values.username);
         formData.append('pass', values.password);
         fetch('http://localhost/worco/', {method:'POST', body: formData})
-            .then(response => response.text())
+            .then(response => response.json())
             .then(response =>{
 
-
-            if(response === "Success"){
-                console.log('Success:', values);
+                console.log(response.login)
+            if(response.login === values.username && response.password === values.password){
+                console.log('Success:', response);
 
                 navigate(`/account`);
-                localStorage.setItem('User', values.username)
+                localStorage.setItem('UserName', response.name)
                 localStorage.setItem('Auth', 'true')
+                localStorage.setItem('Place', response.workplace_id)
 
             }
 
@@ -43,10 +44,11 @@ const Entry = () => {
     };
     return (
 
+
         <Form
-            name="basic"
+            name="normal_login"
             labelCol={{
-                span: 4,
+                span: 8,
             }}
             wrapperCol={{
                 span: 8,
@@ -57,7 +59,10 @@ const Entry = () => {
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete="off"
+
         >
+            <div className="logo1" />
+
             <Form.Item
                 label="Username"
                 name="username"
@@ -67,6 +72,7 @@ const Entry = () => {
                         message: 'Please input your username!',
                     },
                 ]}
+
             >
                 <Input />
             </Form.Item>
@@ -74,6 +80,7 @@ const Entry = () => {
             <Form.Item
                 label="Password"
                 name="password"
+
                 rules={[
                     {
                         required: true,
@@ -88,25 +95,28 @@ const Entry = () => {
                 name="remember"
                 valuePropName="checked"
                 wrapperCol={{
-                    offset: 8,
-                    span: 16,
+                    offset: 11,
+                    span: 11,
                 }}
+
             >
-                <Checkbox>Remember me</Checkbox>
+                <Checkbox >Remember me</Checkbox>
             </Form.Item>
 
             <Form.Item
                 wrapperCol={{
-                    offset: 8,
-                    span: 16,
+                    offset: 11,
+                    span: 11,
                 }}
-            >
-                <Button type="primary" htmlType="submit" >
 
-                    Submit
+            >
+                <Button type="primary" htmlType="submit"  style={{width: 120, backgroundColor: '#FF0000' }}>
+
+                    Войти
                 </Button>
             </Form.Item>
         </Form>
+
     );
 };
 
