@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './Map.css'
 import {UserOutlined} from "@ant-design/icons";
-import {Avatar, DatePicker, Input, Modal, message} from "antd";
+import {Avatar, DatePicker, Input, Modal, message, Button} from "antd";
 import avatarIcon from './images/pp1.png'
 import avatarIcon2 from './images/ppp.png'
 import map from './images/office.jpg'
@@ -138,6 +138,35 @@ const InteractiveMap = () => {
             getPlaces()
         }
     };
+
+    const cancelBookPlace = async () => {
+        //бронирование рабочего места
+
+            const formData = new FormData();
+            formData.append('cmd', 'CANCELBOOKPLACE')
+            formData.append('id', dataPlace.id)
+            formData.append('start_booking', '0')
+            formData.append('end_booking', '0')
+            formData.append('user_name', localStorage.getItem('UserName'))
+
+
+            await fetch('http://localhost:80/worco/', {method: 'POST', body: formData}).then(response => response.json())
+                .then(response => console.log(response))
+            //запись нового рабочего места в локальное хранилище
+            localStorage.setItem('Place', '0')
+            setIsModalBooked(false);
+            getPlaces()
+
+    };
+
+    const cancelBooking = () => {
+        if(localStorage.getItem('Place') !== dataPlace.id){
+            return {display: 'none'}
+        }
+
+        // console.log(localStorage.getItem('Place'))
+        // console.log(dataPlace.id)
+    }
 
     useEffect(() => {
         //getUsersPlaces()
@@ -383,6 +412,7 @@ const InteractiveMap = () => {
                 <p>Почта: {usersPlaces.mail}</p>
                 <br/>
                 <p>Забронировано с {usersPlaces.start_booking} по {usersPlaces.end_booking}</p>
+                <Button danger onClick={cancelBookPlace} style={cancelBooking()}>Отменить бронирование</Button>
             </Modal>
 
             {/*не забронировано*/}

@@ -82,10 +82,10 @@ const Main = () => {
                 <Sider trigger={null} collapsible collapsed={collapsed} style={{backgroundColor: "#293240"}} >
                     <div className="logo" />
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={[window.location.pathname]} style={{backgroundColor: "#293240"}}>
-                        <Menu.Item key="/account" >
+                        <Menu.Item key="/accaunt" >
                             <UserOutlined />
                             <span style={{ }}>Личный кабинет</span>
-                            <Link to="/account" />
+                            <Link to="/accaunt" />
                         </Menu.Item>
                         <Menu.Item key="/bron" >
                             <DesktopOutlined />
@@ -116,11 +116,12 @@ const Main = () => {
                         style={{
                             margin: '24px 16px',
                             padding: 24,
-                            minHeight: 650,
+                            minHeight: window.screen.height - 100,
+
                         }} >
 
                         <Routes>
-                            <Route path="account" element={<Usercab/>} />
+                            <Route path="accaunt" element={<Usercab/>} />
                             <Route path="bron" element={<InteractiveMap/>} />
                             <Route path="stat" element={<Test1/>} />
                         </Routes>

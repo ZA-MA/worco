@@ -21,7 +21,7 @@ const Entry = () => {
             if(response.login === values.username && response.password === values.password){
                 console.log('Success:', response);
 
-                navigate(`/account`);
+                navigate(`/accaunt`);
                 localStorage.setItem('UserName', response.name)
                 localStorage.setItem('Auth', 'true')
                 localStorage.setItem('Place', response.workplace_id)
