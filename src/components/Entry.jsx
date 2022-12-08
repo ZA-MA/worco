@@ -100,6 +100,7 @@ const Entry = () => {
                 }}
 
             >
+                {/* мб убрать его хмм */}
                 <Checkbox >Remember me</Checkbox>
             </Form.Item>
 

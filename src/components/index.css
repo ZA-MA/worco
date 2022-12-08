@@ -36,4 +36,7 @@
 .ant-menu-item-disabled{
     display: none !important;
 }
-
+body{
+    font-family: "Monserrat";
+    font-weight: normal;
+}

@@ -84,17 +84,17 @@ const Main = () => {
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={[window.location.pathname]} style={{backgroundColor: "#293240"}}>
                         <Menu.Item key="/accaunt" >
                             <UserOutlined />
-                            <span style={{ }}>Личный кабинет</span>
+                            <span style={{fontFamily:"Montserrat", fontWeight:"1000" }}>Личный кабинет</span>
                             <Link to="/accaunt" />
                         </Menu.Item>
                         <Menu.Item key="/bron" >
                             <DesktopOutlined />
-                            <span style={{ }}>Карта офиса</span>
+                            <span style={{fontFamily:"Montserrat", fontWeight:"1000"  }}>Карта офиса</span>
                             <Link to="/bron" />
                         </Menu.Item>
                         <Menu.Item key="/stat" disabled={CheckStatusUser().valueOf()}>
                             <LineChartOutlined />
-                            <span>Статистика</span>
+                            <span style={{fontFamily:"Montserrat", fontWeight:"1000" }}>Статистика</span>
                             <Link to="/stat" />
                         </Menu.Item>
                     </Menu>
@@ -116,7 +116,7 @@ const Main = () => {
                         style={{
                             margin: '24px 16px',
                             padding: 24,
-                            minHeight: window.screen.height - 100,
+                            minHeight: window.screen.height - 235,
 
                         }} >
 
